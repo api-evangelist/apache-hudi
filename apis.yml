@@ -1,0 +1,36 @@
+aid: apache-hudi
+name: Apache Hudi
+description: >-
+  Apache Hudi is a data lake platform that provides incremental data processing primitives including upserts and incremental queries. It manages storage of large analytical datasets on distributed file systems with ACID transactions.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Data Lake
+  - Incremental Processing
+  - ACID
+  - Big Data
+  - Lakehouse
+created: '2026-03-16'
+modified: '2026-03-16'
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/apache-hudi/refs/heads/main/apis.yml
+specificationVersion: '0.19'
+apis:
+  - aid: apache-hudi:apache-hudi
+    name: Apache Hudi
+    description: >-
+      Hudi provides Java APIs for write operations (upserts, inserts, deletes) with timeline and compaction APIs, plus integration APIs for Spark, Flink, and Hive for reading and writing Hudi tables.
+    humanURL: https://hudi.apache.org/docs/overview
+    tags:
+      - Java
+      - Spark
+      - Flink
+      - Data Lake
+    properties:
+      - type: Documentation
+        url: https://hudi.apache.org/docs/overview
+maintainers:
+  - FN: Kin Lane
+    email: info@apievangelist.com
