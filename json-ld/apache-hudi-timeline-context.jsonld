@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "hudi": "https://hudi.apache.org/vocab#",
+    "tableName": "schema:name",
+    "basePath": "schema:url",
+    "tableType": "hudi:tableType",
+    "schema": "hudi:schema",
+    "preCombineField": "hudi:preCombineField",
+    "recordKeyField": "hudi:recordKeyField",
+    "partitionPathField": "hudi:partitionPathField",
+    "operation": "hudi:operation",
+    "batchSize": "hudi:batchSize",
+    "parallelism": "hudi:parallelism",
+    "smallFileLimit": "hudi:smallFileLimit",
+    "compactionEnabled": "hudi:compactionEnabled",
+    "timestamp": "schema:dateCreated",
+    "action": "hudi:action",
+    "state": "schema:status",
+    "commitTime": "hudi:commitTime",
+    "totalWriteBytes": "hudi:totalWriteBytes",
+    "totalRecordsWritten": "hudi:totalRecordsWritten",
+    "totalUpdateRecordsWritten": "hudi:totalUpdateRecordsWritten",
+    "totalInsertRecordsWritten": "hudi:totalInsertRecordsWritten",
+    "policy": "hudi:policy",
+    "retainCommits": "hudi:retainCommits",
+    "queryType": "hudi:queryType",
+    "beginInstantTime": "hudi:beginInstantTime",
+    "endInstantTime": "hudi:endInstantTime"
+  }
+}

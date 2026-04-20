@@ -1,0 +1,6 @@
+{
+  "queryType": "SNAPSHOT",
+  "beginInstantTime": "20240101000000000",
+  "endInstantTime": "20240101120000000",
+  "maxCommits": 10
+}

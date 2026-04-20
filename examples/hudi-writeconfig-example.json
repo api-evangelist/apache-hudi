@@ -1,0 +1,7 @@
+{
+  "operation": "UPSERT",
+  "batchSize": 50000,
+  "parallelism": 100,
+  "smallFileLimit": 104857600,
+  "compactionEnabled": false
+}

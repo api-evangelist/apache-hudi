@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-schema/hudi-cleanconfig-schema.json",
+  "title": "CleanConfig",
+  "type": "object",
+  "description": "Hudi table cleaning configuration for managing old file versions",
+  "properties": {
+    "policy": {
+      "type": "string",
+      "description": "Cleaning policy (KEEP_LATEST_COMMITS or KEEP_LATEST_FILE_VERSIONS)",
+      "example": "KEEP_LATEST_COMMITS"
+    },
+    "retainCommits": {
+      "type": "integer",
+      "description": "Number of commits to retain (for KEEP_LATEST_COMMITS)",
+      "example": 10
+    },
+    "retainFileVersions": {
+      "type": "integer",
+      "description": "Number of file versions to retain (for KEEP_LATEST_FILE_VERSIONS)",
+      "example": 3
+    },
+    "triggerStrategy": {
+      "type": "string",
+      "description": "When to trigger cleaning (NUM_COMMITS or TIME_ELAPSED_SECONDS)",
+      "example": "NUM_COMMITS"
+    }
+  }
+}

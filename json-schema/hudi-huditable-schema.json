@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-schema/hudi-huditable-schema.json",
+  "title": "HudiTable",
+  "type": "object",
+  "description": "Apache Hudi table metadata and configuration",
+  "properties": {
+    "tableName": {
+      "type": "string",
+      "description": "Hudi table name",
+      "example": "orders"
+    },
+    "basePath": {
+      "type": "string",
+      "description": "HDFS or S3 base path for the table",
+      "example": "s3://my-bucket/hudi/orders"
+    },
+    "tableType": {
+      "type": "string",
+      "description": "Table type (COPY_ON_WRITE or MERGE_ON_READ)",
+      "example": "COPY_ON_WRITE"
+    },
+    "schema": {
+      "type": "string",
+      "description": "Avro schema string for the table",
+      "example": "{}"
+    },
+    "preCombineField": {
+      "type": "string",
+      "description": "Field used for deduplication ordering",
+      "example": "ts"
+    },
+    "recordKeyField": {
+      "type": "string",
+      "description": "Field used as record key",
+      "example": "order_id"
+    },
+    "partitionPathField": {
+      "type": "string",
+      "description": "Field used for partitioning",
+      "example": "order_date"
+    }
+  }
+}

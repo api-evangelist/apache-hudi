@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-schema/hudi-writeconfig-schema.json",
+  "title": "WriteConfig",
+  "type": "object",
+  "description": "Hudi write operation configuration",
+  "properties": {
+    "operation": {
+      "type": "string",
+      "description": "Write operation type (UPSERT, INSERT, BULK_INSERT, DELETE)",
+      "example": "UPSERT"
+    },
+    "batchSize": {
+      "type": "integer",
+      "description": "Number of records per write batch",
+      "example": 50000
+    },
+    "parallelism": {
+      "type": "integer",
+      "description": "Write parallelism (number of partitions)",
+      "example": 100
+    },
+    "smallFileLimit": {
+      "type": "integer",
+      "description": "Target file size in bytes for auto bin-packing",
+      "example": 104857600
+    },
+    "compactionEnabled": {
+      "type": "boolean",
+      "description": "Whether inline compaction is enabled (MOR tables)",
+      "example": false
+    }
+  }
+}

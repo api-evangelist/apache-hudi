@@ -1,0 +1,9 @@
+{
+  "tableName": "orders",
+  "basePath": "s3://my-bucket/hudi/orders",
+  "tableType": "COPY_ON_WRITE",
+  "schema": "{}",
+  "preCombineField": "ts",
+  "recordKeyField": "order_id",
+  "partitionPathField": "order_date"
+}

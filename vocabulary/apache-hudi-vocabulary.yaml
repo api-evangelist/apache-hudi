@@ -1,0 +1,55 @@
+name: Apache Hudi Vocabulary
+description: Unified taxonomy for Apache Hudi Timeline Server API resources, actions, workflows, and personas
+version: "0.15.0"
+
+resources:
+  - name: HudiTable
+    description: Apache Hudi table with record key, partition, and schema configuration
+    openapi: "#/components/schemas/HudiTable"
+    capability: hudi-timeline
+  - name: TimelineInstant
+    description: A single completed action on the Hudi timeline
+    openapi: "#/components/schemas/TimelineInstant"
+    capability: hudi-timeline
+  - name: CommitMetadata
+    description: Write statistics and metadata for a completed Hudi commit
+    openapi: "#/components/schemas/CommitMetadata"
+    capability: hudi-timeline
+  - name: WriteConfig
+    description: Configuration for Hudi write operations (upserts, inserts, deletes)
+    openapi: "#/components/schemas/WriteConfig"
+    capability: hudi-timeline
+  - name: CleanConfig
+    description: Configuration for cleaning old file versions from Hudi tables
+    openapi: "#/components/schemas/CleanConfig"
+    capability: hudi-timeline
+  - name: QueryConfig
+    description: Configuration for Hudi snapshot, incremental, and read-optimized queries
+    openapi: "#/components/schemas/QueryConfig"
+    capability: hudi-timeline
+
+actions:
+  - name: Create
+    description: Create a new Hudi table
+    operationId: createTable
+  - name: Get
+    description: Retrieve table metadata or commit details
+    operationId: getTable
+  - name: Inspect Timeline
+    description: View timeline instants for a Hudi table
+    operationId: getTimeline
+  - name: Get Commit
+    description: Retrieve commit metadata and write statistics
+    operationId: getCommitMetadata
+  - name: Clean
+    description: Remove old file versions from a Hudi table
+    operationId: runCleaning
+
+workflows:
+  - name: Apache Hudi Lakehouse Management
+    description: Manage Hudi data lake tables with ACID transactions and timeline operations
+    capability: hudi-lakehouse-management.yaml
+
+personas:
+  - name: Data Engineer
+    description: Engineer who builds and maintains lakehouse tables using Apache Hudi for incremental data processing

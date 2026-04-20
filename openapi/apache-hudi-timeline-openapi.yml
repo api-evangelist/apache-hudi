@@ -1,0 +1,287 @@
+openapi: 3.0.3
+info:
+  title: Apache Hudi Timeline Server API
+  version: 0.15.0
+  description: REST API for the Apache Hudi Timeline Server providing table timeline,
+    commit metadata, and table management operations for Hudi data lake tables.
+  contact:
+    email: dev@hudi.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9090
+  description: Hudi Timeline Server
+tags:
+- name: Tables
+  description: Hudi table management operations
+- name: Timeline
+  description: Hudi timeline and commit operations
+- name: Queries
+  description: Hudi query configuration operations
+paths:
+  /v1/hoodie/timeline/{tableName}:
+    get:
+      operationId: getTimeline
+      summary: Apache Hudi Get Timeline
+      description: Get the complete timeline of instants for a Hudi table.
+      tags:
+      - Timeline
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Hudi table name
+      responses:
+        '200':
+          description: Timeline retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimelineInstant'
+  /v1/hoodie/timeline/{tableName}/commits/{commitTime}:
+    get:
+      operationId: getCommitMetadata
+      summary: Apache Hudi Get Commit Metadata
+      description: Get metadata for a specific commit instant on the Hudi timeline.
+      tags:
+      - Timeline
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commitTime
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Commit timestamp
+      responses:
+        '200':
+          description: Commit metadata retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitMetadata'
+        '404':
+          description: Commit not found
+  /v1/hoodie/table:
+    post:
+      operationId: createTable
+      summary: Apache Hudi Create Table
+      description: Create a new Hudi table with the provided configuration.
+      tags:
+      - Tables
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HudiTable'
+      responses:
+        '201':
+          description: Table created
+        '400':
+          description: Invalid configuration
+  /v1/hoodie/table/{tableName}:
+    get:
+      operationId: getTable
+      summary: Apache Hudi Get Table
+      description: Get configuration and metadata for a Hudi table.
+      tags:
+      - Tables
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Table retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HudiTable'
+        '404':
+          description: Table not found
+  /v1/hoodie/table/{tableName}/clean:
+    post:
+      operationId: runCleaning
+      summary: Apache Hudi Run Cleaning
+      description: Trigger a cleaning operation on a Hudi table to remove old file
+        versions.
+      tags:
+      - Tables
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CleanConfig'
+      responses:
+        '200':
+          description: Cleaning completed
+components:
+  schemas:
+    HudiTable:
+      type: object
+      description: Apache Hudi table metadata and configuration
+      properties:
+        tableName:
+          type: string
+          description: Hudi table name
+          example: orders
+        basePath:
+          type: string
+          description: HDFS or S3 base path for the table
+          example: s3://my-bucket/hudi/orders
+        tableType:
+          type: string
+          description: Table type (COPY_ON_WRITE or MERGE_ON_READ)
+          example: COPY_ON_WRITE
+        schema:
+          type: string
+          description: Avro schema string for the table
+          example: '{}'
+        preCombineField:
+          type: string
+          description: Field used for deduplication ordering
+          example: ts
+        recordKeyField:
+          type: string
+          description: Field used as record key
+          example: order_id
+        partitionPathField:
+          type: string
+          description: Field used for partitioning
+          example: order_date
+    WriteConfig:
+      type: object
+      description: Hudi write operation configuration
+      properties:
+        operation:
+          type: string
+          description: Write operation type (UPSERT, INSERT, BULK_INSERT, DELETE)
+          example: UPSERT
+        batchSize:
+          type: integer
+          description: Number of records per write batch
+          example: 50000
+        parallelism:
+          type: integer
+          description: Write parallelism (number of partitions)
+          example: 100
+        smallFileLimit:
+          type: integer
+          description: Target file size in bytes for auto bin-packing
+          example: 104857600
+        compactionEnabled:
+          type: boolean
+          description: Whether inline compaction is enabled (MOR tables)
+          example: false
+    TimelineInstant:
+      type: object
+      description: A single instant on the Hudi timeline representing a completed
+        action
+      properties:
+        timestamp:
+          type: string
+          description: Instant timestamp (yyyyMMddHHmmssSSS format)
+          example: '20240101120000000'
+        action:
+          type: string
+          description: Action type (commit, deltacommit, compaction, clean, rollback)
+          example: commit
+        state:
+          type: string
+          description: Instant state (COMPLETED, INFLIGHT, REQUESTED)
+          example: COMPLETED
+    CommitMetadata:
+      type: object
+      description: Metadata for a completed Hudi commit operation
+      properties:
+        commitTime:
+          type: string
+          description: Commit timestamp
+          example: '20240101120000000'
+        totalWriteBytes:
+          type: integer
+          format: int64
+          description: Total bytes written
+          example: 52428800
+        totalRecordsWritten:
+          type: integer
+          format: int64
+          description: Total records written
+          example: 100000
+        totalUpdateRecordsWritten:
+          type: integer
+          format: int64
+          description: Records updated
+          example: 30000
+        totalInsertRecordsWritten:
+          type: integer
+          format: int64
+          description: Records inserted
+          example: 70000
+        totalBytesWritten:
+          type: integer
+          format: int64
+          description: Bytes written to storage
+          example: 52428800
+    CleanConfig:
+      type: object
+      description: Hudi table cleaning configuration for managing old file versions
+      properties:
+        policy:
+          type: string
+          description: Cleaning policy (KEEP_LATEST_COMMITS or KEEP_LATEST_FILE_VERSIONS)
+          example: KEEP_LATEST_COMMITS
+        retainCommits:
+          type: integer
+          description: Number of commits to retain (for KEEP_LATEST_COMMITS)
+          example: 10
+        retainFileVersions:
+          type: integer
+          description: Number of file versions to retain (for KEEP_LATEST_FILE_VERSIONS)
+          example: 3
+        triggerStrategy:
+          type: string
+          description: When to trigger cleaning (NUM_COMMITS or TIME_ELAPSED_SECONDS)
+          example: NUM_COMMITS
+    QueryConfig:
+      type: object
+      description: Hudi query configuration for incremental or snapshot queries
+      properties:
+        queryType:
+          type: string
+          description: Query type (SNAPSHOT, INCREMENTAL, READ_OPTIMIZED)
+          example: SNAPSHOT
+        beginInstantTime:
+          type: string
+          description: Start instant for incremental queries
+          example: '20240101000000000'
+        endInstantTime:
+          type: string
+          description: End instant for incremental queries
+          example: '20240101120000000'
+        maxCommits:
+          type: integer
+          description: Maximum commits to include in incremental query
+          example: 10

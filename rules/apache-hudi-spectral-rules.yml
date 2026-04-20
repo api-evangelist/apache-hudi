@@ -1,0 +1,64 @@
+rules:
+  hudi-operation-summary:
+    description: All Hudi Timeline Server API operations must have a summary
+    severity: error
+    given: "$.paths[*][get,put,post,delete,patch]"
+    then:
+      field: summary
+      function: truthy
+
+  hudi-operation-id:
+    description: All Hudi Timeline Server API operations must have an operationId
+    severity: error
+    given: "$.paths[*][get,put,post,delete,patch]"
+    then:
+      field: operationId
+      function: truthy
+
+  hudi-operation-tags:
+    description: All Hudi Timeline Server API operations must have at least one tag
+    severity: warn
+    given: "$.paths[*][get,put,post,delete,patch]"
+    then:
+      field: tags
+      function: truthy
+
+  hudi-schema-description:
+    description: All Hudi schema components must have a description
+    severity: warn
+    given: "$.components.schemas[*]"
+    then:
+      field: description
+      function: truthy
+
+  hudi-property-description:
+    description: All Hudi schema properties should have descriptions
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  hudi-info-contact:
+    description: API info must include contact information
+    severity: warn
+    given: "$.info"
+    then:
+      field: contact
+      function: truthy
+
+  hudi-info-license:
+    description: API info must include license information
+    severity: warn
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  hudi-path-parameters-described:
+    description: All Hudi path parameters must have descriptions
+    severity: warn
+    given: "$.paths[*][*].parameters[?(@.in=='path')]"
+    then:
+      field: description
+      function: truthy

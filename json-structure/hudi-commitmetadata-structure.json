@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-structure/hudi-commitmetadata-structure.json",
+  "title": "CommitMetadata",
+  "type": "object",
+  "properties": {
+    "commitTime": "string",
+    "totalWriteBytes": "int64",
+    "totalRecordsWritten": "int64",
+    "totalUpdateRecordsWritten": "int64",
+    "totalInsertRecordsWritten": "int64",
+    "totalBytesWritten": "int64"
+  }
+}

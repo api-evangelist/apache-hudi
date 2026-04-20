@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-structure/hudi-cleanconfig-structure.json",
+  "title": "CleanConfig",
+  "type": "object",
+  "properties": {
+    "policy": "string",
+    "retainCommits": "int32",
+    "retainFileVersions": "int32",
+    "triggerStrategy": "string"
+  }
+}

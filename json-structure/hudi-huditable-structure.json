@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/extended/v0/#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-structure/hudi-huditable-structure.json",
+  "title": "HudiTable",
+  "type": "object",
+  "properties": {
+    "tableName": "string",
+    "basePath": "string",
+    "tableType": "string",
+    "schema": "string",
+    "preCombineField": "string",
+    "recordKeyField": "string",
+    "partitionPathField": "string"
+  }
+}

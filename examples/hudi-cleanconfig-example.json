@@ -1,0 +1,6 @@
+{
+  "policy": "KEEP_LATEST_COMMITS",
+  "retainCommits": 10,
+  "retainFileVersions": 3,
+  "triggerStrategy": "NUM_COMMITS"
+}

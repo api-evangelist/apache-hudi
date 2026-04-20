@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-schema/hudi-queryconfig-schema.json",
+  "title": "QueryConfig",
+  "type": "object",
+  "description": "Hudi query configuration for incremental or snapshot queries",
+  "properties": {
+    "queryType": {
+      "type": "string",
+      "description": "Query type (SNAPSHOT, INCREMENTAL, READ_OPTIMIZED)",
+      "example": "SNAPSHOT"
+    },
+    "beginInstantTime": {
+      "type": "string",
+      "description": "Start instant for incremental queries",
+      "example": "20240101000000000"
+    },
+    "endInstantTime": {
+      "type": "string",
+      "description": "End instant for incremental queries",
+      "example": "20240101120000000"
+    },
+    "maxCommits": {
+      "type": "integer",
+      "description": "Maximum commits to include in incremental query",
+      "example": 10
+    }
+  }
+}

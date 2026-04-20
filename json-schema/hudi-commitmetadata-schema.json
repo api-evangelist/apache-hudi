@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://api-evangelist.github.io/apache-hudi/json-schema/hudi-commitmetadata-schema.json",
+  "title": "CommitMetadata",
+  "type": "object",
+  "description": "Metadata for a completed Hudi commit operation",
+  "properties": {
+    "commitTime": {
+      "type": "string",
+      "description": "Commit timestamp",
+      "example": "20240101120000000"
+    },
+    "totalWriteBytes": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total bytes written",
+      "example": 52428800
+    },
+    "totalRecordsWritten": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Total records written",
+      "example": 100000
+    },
+    "totalUpdateRecordsWritten": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Records updated",
+      "example": 30000
+    },
+    "totalInsertRecordsWritten": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Records inserted",
+      "example": 70000
+    },
+    "totalBytesWritten": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Bytes written to storage",
+      "example": 52428800
+    }
+  }
+}

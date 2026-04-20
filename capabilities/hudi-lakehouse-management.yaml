@@ -1,0 +1,100 @@
+name: Apache Hudi Lakehouse Management
+description: Workflow capability for managing Apache Hudi data lake tables with ACID transactions, incremental queries, and timeline operations
+persona: Data Engineer
+workflow:
+  - step: create-table
+    name: Create Hudi Table
+    description: Initialize a new Hudi table with record key and partition configuration
+    capability: hudi-timeline
+    operation: createTable
+    server:
+      rest: http://localhost:9090
+      mcp: http://localhost:9090
+
+  - step: get-timeline
+    name: Inspect Timeline
+    description: View completed commits and operations on the Hudi timeline
+    capability: hudi-timeline
+    operation: getTimeline
+    server:
+      rest: http://localhost:9090
+      mcp: http://localhost:9090
+
+  - step: get-commit
+    name: Get Commit Details
+    description: Inspect write statistics for a specific commit
+    capability: hudi-timeline
+    operation: getCommitMetadata
+    server:
+      rest: http://localhost:9090
+      mcp: http://localhost:9090
+
+  - step: run-cleaning
+    name: Clean Old Files
+    description: Remove old file versions to reclaim storage space
+    capability: hudi-timeline
+    operation: runCleaning
+    server:
+      rest: http://localhost:9090
+      mcp: http://localhost:9090
+
+tools:
+  - name: getTimeline
+    description: Get all timeline instants for a Hudi table
+    server:
+      rest:
+        baseUrl: http://localhost:9090
+        path: /v1/hoodie/timeline/{tableName}
+        method: GET
+      mcp:
+        baseUrl: http://localhost:9090
+        path: /tools/getTimeline
+        method: POST
+
+  - name: getCommitMetadata
+    description: Get write statistics for a specific Hudi commit
+    server:
+      rest:
+        baseUrl: http://localhost:9090
+        path: /v1/hoodie/timeline/{tableName}/commits/{commitTime}
+        method: GET
+      mcp:
+        baseUrl: http://localhost:9090
+        path: /tools/getCommitMetadata
+        method: POST
+
+  - name: createTable
+    description: Create a new Apache Hudi table
+    server:
+      rest:
+        baseUrl: http://localhost:9090
+        path: /v1/hoodie/table
+        method: POST
+      mcp:
+        baseUrl: http://localhost:9090
+        path: /tools/createTable
+        method: POST
+
+  - name: getTable
+    description: Get configuration and metadata for a Hudi table
+    server:
+      rest:
+        baseUrl: http://localhost:9090
+        path: /v1/hoodie/table/{tableName}
+        method: GET
+      mcp:
+        baseUrl: http://localhost:9090
+        path: /tools/getTable
+        method: POST
+
+  - name: runCleaning
+    description: Trigger cleaning to remove old Hudi file versions
+    server:
+      rest:
+        baseUrl: http://localhost:9090
+        path: /v1/hoodie/table/{tableName}/clean
+        method: POST
+      mcp:
+        baseUrl: http://localhost:9090
+        path: /tools/runCleaning
+        method: POST
