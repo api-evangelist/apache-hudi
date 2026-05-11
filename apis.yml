@@ -116,6 +116,11 @@ common:
         description: Native Hudi input format support for querying Hudi tables from Presto and Trino.
       - name: AWS Athena
         description: Athena supports reading Hudi COW and MOR tables stored in Amazon S3.
+  - type: Integrations
+    url: https://hudi.apache.org/ecosystem/
+integrations:
+  - name: Apache Hudi
+  - name: Apache Hudiâ¢
 maintainers:
   - FN: Kin Lane
     email: info@apievangelist.com
