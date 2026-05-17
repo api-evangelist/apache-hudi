@@ -39,7 +39,7 @@ apis:
         url: openapi/apache-hudi-timeline-openapi.yml
       - type: JSONSchema
         url: json-schema/hudi-huditableconfig-schema.json
-      - type: JSON-LD
+      - type: JSONLD
         url: json-ld/apache-hudi-timeline-context.jsonld
 
   - aid: apache-hudi:apache-hudi-java-api
