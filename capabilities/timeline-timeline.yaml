@@ -1,0 +1,125 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Apache Hudi Timeline Server API — Timeline
+  description: 'Apache Hudi Timeline Server API — Timeline. 2 operations. Lead operation: Apache Hudi Get Timeline. Self-contained
+    Naftiko capability covering one Apache Hudi business surface.'
+  tags:
+  - Apache Hudi
+  - Timeline
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    APACHE_HUDI_API_KEY: APACHE_HUDI_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: timeline-timeline
+    baseUri: http://localhost:9090
+    description: Apache Hudi Timeline Server API — Timeline business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-hoodie-timeline-tableName
+      path: /v1/hoodie/timeline/{tableName}
+      operations:
+      - name: gettimeline
+        method: GET
+        description: Apache Hudi Get Timeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tableName
+          in: path
+          type: string
+          description: Hudi table name
+          required: true
+    - name: v1-hoodie-timeline-tableName-commits-commitTime
+      path: /v1/hoodie/timeline/{tableName}/commits/{commitTime}
+      operations:
+      - name: getcommitmetadata
+        method: GET
+        description: Apache Hudi Get Commit Metadata
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: tableName
+          in: path
+          type: string
+          required: true
+        - name: commitTime
+          in: path
+          type: string
+          description: Commit timestamp
+          required: true
+  exposes:
+  - type: rest
+    namespace: timeline-timeline-rest
+    port: 8080
+    description: REST adapter for Apache Hudi Timeline Server API — Timeline. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/v1/hoodie/timeline/{tablename}
+      name: v1-hoodie-timeline-tablename
+      description: REST surface for v1-hoodie-timeline-tableName.
+      operations:
+      - method: GET
+        name: gettimeline
+        description: Apache Hudi Get Timeline
+        call: timeline-timeline.gettimeline
+        with:
+          tableName: rest.tableName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/hoodie/timeline/{tablename}/commits/{committime}
+      name: v1-hoodie-timeline-tablename-commits-committime
+      description: REST surface for v1-hoodie-timeline-tableName-commits-commitTime.
+      operations:
+      - method: GET
+        name: getcommitmetadata
+        description: Apache Hudi Get Commit Metadata
+        call: timeline-timeline.getcommitmetadata
+        with:
+          tableName: rest.tableName
+          commitTime: rest.commitTime
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: timeline-timeline-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Apache Hudi Timeline Server API — Timeline. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: apache-hudi-get-timeline
+      description: Apache Hudi Get Timeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timeline-timeline.gettimeline
+      with:
+        tableName: tools.tableName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: apache-hudi-get-commit-metadata
+      description: Apache Hudi Get Commit Metadata
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: timeline-timeline.getcommitmetadata
+      with:
+        tableName: tools.tableName
+        commitTime: tools.commitTime
+      outputParameters:
+      - type: object
+        mapping: $.
