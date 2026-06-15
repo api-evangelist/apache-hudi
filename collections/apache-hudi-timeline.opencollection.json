@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Apache Hudi Timeline Server API",
+    "version": "0.15.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Timeline",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Hudi Get Timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9090/v1/hoodie/timeline/:tableName",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path",
+                "description": "Hudi table name"
+              }
+            ]
+          },
+          "docs": "Get the complete timeline of instants for a Hudi table."
+        },
+        {
+          "info": {
+            "name": "Apache Hudi Get Commit Metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9090/v1/hoodie/timeline/:tableName/commits/:commitTime",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "commitTime",
+                "value": "",
+                "type": "path",
+                "description": "Commit timestamp"
+              }
+            ]
+          },
+          "docs": "Get metadata for a specific commit instant on the Hudi timeline."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apache Hudi Create Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9090/v1/hoodie/table",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new Hudi table with the provided configuration."
+        },
+        {
+          "info": {
+            "name": "Apache Hudi Get Table",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9090/v1/hoodie/table/:tableName",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get configuration and metadata for a Hudi table."
+        },
+        {
+          "info": {
+            "name": "Apache Hudi Run Cleaning",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:9090/v1/hoodie/table/:tableName/clean",
+            "params": [
+              {
+                "name": "tableName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Trigger a cleaning operation on a Hudi table to remove old file versions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

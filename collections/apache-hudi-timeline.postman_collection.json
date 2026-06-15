@@ -1,0 +1,665 @@
+{
+  "item": [
+    {
+      "id": "6699be1f-1c39-4663-8d1c-e1fd65b50bd5",
+      "name": "Tables",
+      "description": {
+        "content": "Hudi table management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "33d1cec0-460d-48a1-af6f-ac4efe645769",
+          "name": "Apache Hudi Create Table",
+          "request": {
+            "name": "Apache Hudi Create Table",
+            "description": {
+              "content": "Create a new Hudi table with the provided configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tableName\": \"<string>\",\n  \"basePath\": \"<string>\",\n  \"tableType\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"preCombineField\": \"<string>\",\n  \"recordKeyField\": \"<string>\",\n  \"partitionPathField\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e272bfef-4cd1-43f1-8ee8-8425e4d75ef5",
+              "name": "Table created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a436ae1-2735-48df-a025-2a217a3bd69b",
+              "name": "Invalid configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78230cf3-af05-4d44-8a10-cd62bb6421bc",
+          "name": "Apache Hudi Get Table",
+          "request": {
+            "name": "Apache Hudi Get Table",
+            "description": {
+              "content": "Get configuration and metadata for a Hudi table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table",
+                ":tableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1e41253-4005-4462-a1ad-72642fe5110f",
+              "name": "Table retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "13057df2-cb2a-41f8-9608-746d4d3ce2e9",
+              "name": "Table not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "139ab109-1d6b-4b01-a088-55b2ee93c752",
+          "name": "Apache Hudi Run Cleaning",
+          "request": {
+            "name": "Apache Hudi Run Cleaning",
+            "description": {
+              "content": "Trigger a cleaning operation on a Hudi table to remove old file versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table",
+                ":tableName",
+                "clean"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"policy\": \"<string>\",\n  \"retainCommits\": \"<integer>\",\n  \"retainFileVersions\": \"<integer>\",\n  \"triggerStrategy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "be480eca-c699-4d4a-bc15-035270cc0d76",
+              "name": "Cleaning completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName",
+                    "clean"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy\": \"KEEP_LATEST_COMMITS\",\n  \"retainCommits\": 10,\n  \"retainFileVersions\": 3,\n  \"triggerStrategy\": \"NUM_COMMITS\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2ffd669c-3ece-42bd-9c52-ad22df43e3ef",
+      "name": "Timeline",
+      "description": {
+        "content": "Hudi timeline and commit operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "730720aa-9dff-4ae1-8962-0e261f3ca45d",
+          "name": "Apache Hudi Get Timeline",
+          "request": {
+            "name": "Apache Hudi Get Timeline",
+            "description": {
+              "content": "Get the complete timeline of instants for a Hudi table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "timeline",
+                ":tableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) Hudi table name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "984ffd2e-8bf9-4414-9003-0a7b09524994",
+              "name": "Timeline retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) Hudi table name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instants\": [\n    {\n      \"timestamp\": \"20240101120000000\",\n      \"action\": \"commit\",\n      \"state\": \"COMPLETED\"\n    },\n    {\n      \"timestamp\": \"20240101120000000\",\n      \"action\": \"commit\",\n      \"state\": \"COMPLETED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a44b9e8-70e7-4ced-976e-25f9c72d9d9f",
+          "name": "Apache Hudi Get Commit Metadata",
+          "request": {
+            "name": "Apache Hudi Get Commit Metadata",
+            "description": {
+              "content": "Get metadata for a specific commit instant on the Hudi timeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "timeline",
+                ":tableName",
+                "commits",
+                ":commitTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commitTime",
+                  "description": "(Required) Commit timestamp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aeb1999e-f920-445c-acad-3806116d0e77",
+              "name": "Commit metadata retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName",
+                    "commits",
+                    ":commitTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commitTime",
+                      "description": "(Required) Commit timestamp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commitTime\": \"20240101120000000\",\n  \"totalWriteBytes\": 52428800,\n  \"totalRecordsWritten\": 100000,\n  \"totalUpdateRecordsWritten\": 30000,\n  \"totalInsertRecordsWritten\": 70000,\n  \"totalBytesWritten\": 52428800\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2f7c600-c884-47fd-afa2-201c9357210c",
+              "name": "Commit not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName",
+                    "commits",
+                    ":commitTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commitTime",
+                      "description": "(Required) Commit timestamp"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "63a31f7b-6842-4464-9da8-597b82f31a9a",
+      "name": "Queries",
+      "description": {
+        "content": "Hudi query configuration operations",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "54e47f8a-b941-44fa-8611-511c015a35ad",
+    "name": "Apache Hudi Timeline Server API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Apache Hudi Timeline Server providing table timeline, commit metadata, and table management operations for Hudi data lake tables.\n\nContact Support:\n Email: dev@hudi.apache.org",
+      "type": "text/plain"
+    }
+  }
+}
