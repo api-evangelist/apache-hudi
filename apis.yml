@@ -57,7 +57,7 @@ apis:
     properties:
       - type: Documentation
         url: https://hudi.apache.org/docs/writing_data
-      - type: SDK
+      - type: SDKs
         url: https://search.maven.org/artifact/org.apache.hudi/hudi-spark3.5-bundle_2.12
         title: Java SDK (Maven Central)
 common:
