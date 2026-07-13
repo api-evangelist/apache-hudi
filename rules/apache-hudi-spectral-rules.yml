@@ -1,64 +1,111 @@
+# apache-hudi — Spectral ruleset (strengthened)
+# Plain Spectral. Existing hand-authored rules preserved; measured rules added
+# from this provider's own OpenAPI conventions by strengthen_ruleset.py,
+# then self-validated against the spec.
+#
+# Provenance:
+#   - path-params-casing: camel @ 100% (n=5)
+#   - operationid-casing: camel @ 100% (n=5)
+#   - schema-names-casing: pascal @ 100% (n=6)
+#   - schema-properties-casing: camel @ 76% (n=29)
+#   - merge: kept 8 existing, added 5 measured, upgraded 0
+#   - added: path-params-casing, operationid-casing, schema-names-casing, schema-properties-casing, no-empty-descriptions
+extends:
+  - spectral:oas
 rules:
   hudi-operation-summary:
     description: All Hudi Timeline Server API operations must have a summary
     severity: error
-    given: "$.paths[*][get,put,post,delete,patch]"
+    given: $.paths[*][get,put,post,delete,patch]
     then:
       field: summary
       function: truthy
-
   hudi-operation-id:
     description: All Hudi Timeline Server API operations must have an operationId
     severity: error
-    given: "$.paths[*][get,put,post,delete,patch]"
+    given: $.paths[*][get,put,post,delete,patch]
     then:
       field: operationId
       function: truthy
-
   hudi-operation-tags:
     description: All Hudi Timeline Server API operations must have at least one tag
     severity: warn
-    given: "$.paths[*][get,put,post,delete,patch]"
+    given: $.paths[*][get,put,post,delete,patch]
     then:
       field: tags
       function: truthy
-
   hudi-schema-description:
     description: All Hudi schema components must have a description
     severity: warn
-    given: "$.components.schemas[*]"
+    given: $.components.schemas[*]
     then:
       field: description
       function: truthy
-
   hudi-property-description:
     description: All Hudi schema properties should have descriptions
     severity: info
-    given: "$.components.schemas[*].properties[*]"
+    given: $.components.schemas[*].properties[*]
     then:
       field: description
       function: truthy
-
   hudi-info-contact:
     description: API info must include contact information
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: contact
       function: truthy
-
   hudi-info-license:
     description: API info must include license information
     severity: warn
-    given: "$.info"
+    given: $.info
     then:
       field: license
       function: truthy
-
   hudi-path-parameters-described:
     description: All Hudi path parameters must have descriptions
     severity: warn
-    given: "$.paths[*][*].parameters[?(@.in=='path')]"
+    given: $.paths[*][*].parameters[?(@.in=='path')]
     then:
       field: description
+      function: truthy
+  path-params-casing:
+    description: Path parameters should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*].parameters[?(@.in=='path')].name
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  operationid-casing:
+    description: Operation IDs should be camelCase (the dominant convention in this API).
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: casing
+      functionOptions:
+        type: camel
+  schema-names-casing:
+    description: Component schema names should be PascalCase (the dominant convention in this API).
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: pascal
+  schema-properties-casing:
+    description: Schema properties should be camelCase (the dominant convention in this API).
+    severity: info
+    given: $.components.schemas[*].properties
+    then:
+      field: '@key'
+      function: casing
+      functionOptions:
+        type: camel
+  no-empty-descriptions:
+    description: Descriptions must not be empty strings.
+    severity: warn
+    given: $..description
+    then:
       function: truthy
