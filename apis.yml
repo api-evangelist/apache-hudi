@@ -61,6 +61,8 @@ apis:
         url: https://search.maven.org/artifact/org.apache.hudi/hudi-spark3.5-bundle_2.12
         title: Java SDK (Maven Central)
 common:
+  - type: AgenticAccess
+    url: agentic-access/apache-hudi-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/apache-hudi-vulnerability-disclosure.yml
   - type: DomainSecurity
