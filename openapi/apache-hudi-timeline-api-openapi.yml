@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Apache Hudi Server Tables Timeline API
+  version: 0.15.0
+  description: REST API for the Apache Hudi Timeline Server providing table timeline, commit metadata, and table management operations for Hudi data lake tables.
+  contact:
+    email: dev@hudi.apache.org
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:9090
+  description: Hudi Timeline Server
+tags:
+- name: Timeline
+  description: Hudi timeline and commit operations
+paths:
+  /v1/hoodie/timeline/{tableName}:
+    get:
+      operationId: getTimeline
+      summary: Apache Hudi Get Timeline
+      description: Get the complete timeline of instants for a Hudi table.
+      tags:
+      - Timeline
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Hudi table name
+      responses:
+        '200':
+          description: Timeline retrieved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  instants:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/TimelineInstant'
+  /v1/hoodie/timeline/{tableName}/commits/{commitTime}:
+    get:
+      operationId: getCommitMetadata
+      summary: Apache Hudi Get Commit Metadata
+      description: Get metadata for a specific commit instant on the Hudi timeline.
+      tags:
+      - Timeline
+      parameters:
+      - name: tableName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: commitTime
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Commit timestamp
+      responses:
+        '200':
+          description: Commit metadata retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommitMetadata'
+        '404':
+          description: Commit not found
+components:
+  schemas:
+    CommitMetadata:
+      type: object
+      description: Metadata for a completed Hudi commit operation
+      properties:
+        commitTime:
+          type: string
+          description: Commit timestamp
+          example: '20240101120000000'
+        totalWriteBytes:
+          type: integer
+          format: int64
+          description: Total bytes written
+          example: 52428800
+        totalRecordsWritten:
+          type: integer
+          format: int64
+          description: Total records written
+          example: 100000
+        totalUpdateRecordsWritten:
+          type: integer
+          format: int64
+          description: Records updated
+          example: 30000
+        totalInsertRecordsWritten:
+          type: integer
+          format: int64
+          description: Records inserted
+          example: 70000
+        totalBytesWritten:
+          type: integer
+          format: int64
+          description: Bytes written to storage
+          example: 52428800
+    TimelineInstant:
+      type: object
+      description: A single instant on the Hudi timeline representing a completed action
+      properties:
+        timestamp:
+          type: string
+          description: Instant timestamp (yyyyMMddHHmmssSSS format)
+          example: '20240101120000000'
+        action:
+          type: string
+          description: Action type (commit, deltacommit, compaction, clean, rollback)
+          example: commit
+        state:
+          type: string
+          description: Instant state (COMPLETED, INFLIGHT, REQUESTED)
+          example: COMPLETED
