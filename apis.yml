@@ -5,9 +5,21 @@ description: >-
   incremental queries. It manages storage of large analytical datasets on distributed file systems with ACID
   transactions, timeline-based versioning, and integrations for Spark, Flink, and Hive.
 type: Index
+accessModel:
+  pricing: freemium
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Freemium
+  confidence: medium
+  source:
+  - plans
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/apache-hudi.png
 tags:
   - ACID
   - Apache
@@ -21,45 +33,55 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-hudi/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: apache-hudi:apache-hudi-timeline-api
-    name: Apache Hudi Timeline Server API
-    description: >-
-      REST API for the Apache Hudi Timeline Server providing table timeline management, commit metadata inspection, and
-      table administration for Hudi data lake tables.
-    humanURL: https://hudi.apache.org/docs/timeline
-    baseURL: http://localhost:9090
-    tags:
-      - Commits
-      - Data Lake
-      - REST
-      - Tables
-      - Timeline
-    properties:
-      - type: Documentation
-        url: https://hudi.apache.org/docs/timeline
-      - type: OpenAPI
-        url: openapi/apache-hudi-timeline-openapi.yml
-      - type: JSONSchema
-        url: json-schema/hudi-huditableconfig-schema.json
-      - type: JSONLD
-        url: json-ld/apache-hudi-timeline-context.jsonld
-  - aid: apache-hudi:apache-hudi-java-api
-    name: Apache Hudi Java API
-    description: >-
-      Java API for writing Hudi tables with upserts, inserts, and deletes, plus timeline management, compaction, and
-      Spark/Flink DataSource integration APIs.
-    humanURL: https://hudi.apache.org/docs/writing_data
-    tags:
-      - Java
-      - SDK
-      - Spark
-      - Flink
-    properties:
-      - type: Documentation
-        url: https://hudi.apache.org/docs/writing_data
-      - type: SDKs
-        url: https://search.maven.org/artifact/org.apache.hudi/hudi-spark3.5-bundle_2.12
-        title: Java SDK (Maven Central)
+- aid: apache-hudi:apache-hudi-java-api
+  name: Apache Hudi Java API
+  description: >-
+    Java API for writing Hudi tables with upserts, inserts, and deletes, plus timeline management, compaction,
+    and Spark/Flink DataSource integration APIs.
+  humanURL: https://hudi.apache.org/docs/writing_data
+  tags:
+  - Java
+  - SDK
+  - Spark
+  - Flink
+  properties:
+  - type: Documentation
+    url: https://hudi.apache.org/docs/writing_data
+  - type: SDKs
+    url: https://search.maven.org/artifact/org.apache.hudi/hudi-spark3.5-bundle_2.12
+    title: Java SDK (Maven Central)
+- aid: apache-hudi:apache-hudi-tables-api
+  name: Apache Hudi Tables API
+  description: Hudi table management operations
+  humanURL: https://hudi.apache.org/docs/timeline
+  baseURL: http://localhost:9090
+  tags:
+  - Tables
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-hudi-tables-api-openapi.yml
+  - type: Documentation
+    url: https://hudi.apache.org/docs/timeline
+  - type: JSONSchema
+    url: json-schema/hudi-huditableconfig-schema.json
+  - type: JSONLD
+    url: json-ld/apache-hudi-timeline-context.jsonld
+- aid: apache-hudi:apache-hudi-timeline-api
+  name: Apache Hudi Timeline API
+  description: Hudi timeline and commit operations
+  humanURL: https://hudi.apache.org/docs/timeline
+  baseURL: http://localhost:9090
+  tags:
+  - Timeline
+  properties:
+  - type: OpenAPI
+    url: openapi/apache-hudi-timeline-api-openapi.yml
+  - type: Documentation
+    url: https://hudi.apache.org/docs/timeline
+  - type: JSONSchema
+    url: json-schema/hudi-huditableconfig-schema.json
+  - type: JSONLD
+    url: json-ld/apache-hudi-timeline-context.jsonld
 common:
   - type: AgenticAccess
     url: agentic-access/apache-hudi-agentic-access.yml
