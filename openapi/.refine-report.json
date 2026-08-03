@@ -1,0 +1,16 @@
+{
+  "provider": "apache-hudi",
+  "sources": [
+    "apache-hudi-tables-api-openapi.yml",
+    "apache-hudi-timeline-api-openapi.yml"
+  ],
+  "outputs": [
+    "apache-hudi-tables-api-openapi.yml",
+    "apache-hudi-timeline-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
