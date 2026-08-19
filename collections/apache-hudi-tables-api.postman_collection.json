@@ -1,0 +1,393 @@
+{
+  "item": [
+    {
+      "id": "7da0a410-7015-4827-87bd-1472f4cfa38f",
+      "name": "Tables",
+      "description": {
+        "content": "Hudi table management operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3875b79f-a0ff-48ba-a581-01037948824a",
+          "name": "Apache Hudi Create Table",
+          "request": {
+            "name": "Apache Hudi Create Table",
+            "description": {
+              "content": "Create a new Hudi table with the provided configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tableName\": \"<string>\",\n  \"basePath\": \"<string>\",\n  \"tableType\": \"<string>\",\n  \"schema\": \"<string>\",\n  \"preCombineField\": \"<string>\",\n  \"recordKeyField\": \"<string>\",\n  \"partitionPathField\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a52f4793-4e2b-4ada-b103-64a657bc5cd2",
+              "name": "Table created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "793c2257-c710-485f-8559-29f428e3277d",
+              "name": "Invalid configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a59e2a75-d2ac-4954-a94f-94defdbd40af",
+          "name": "Apache Hudi Get Table",
+          "request": {
+            "name": "Apache Hudi Get Table",
+            "description": {
+              "content": "Get configuration and metadata for a Hudi table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table",
+                ":tableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3934413c-2a95-4162-b670-4b2d0608c3e3",
+              "name": "Table retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tableName\": \"orders\",\n  \"basePath\": \"s3://my-bucket/hudi/orders\",\n  \"tableType\": \"COPY_ON_WRITE\",\n  \"schema\": \"{}\",\n  \"preCombineField\": \"ts\",\n  \"recordKeyField\": \"order_id\",\n  \"partitionPathField\": \"order_date\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "09ddf98f-7534-4953-86ae-77ca3d8daff0",
+              "name": "Table not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83763ed2-7102-4f03-bc4a-38d6ac9dd9df",
+          "name": "Apache Hudi Run Cleaning",
+          "request": {
+            "name": "Apache Hudi Run Cleaning",
+            "description": {
+              "content": "Trigger a cleaning operation on a Hudi table to remove old file versions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "table",
+                ":tableName",
+                "clean"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"policy\": \"<string>\",\n  \"retainCommits\": \"<integer>\",\n  \"retainFileVersions\": \"<integer>\",\n  \"triggerStrategy\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00db9520-3cd8-4cda-b5a2-a0010ff36126",
+              "name": "Cleaning completed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "table",
+                    ":tableName",
+                    "clean"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"policy\": \"KEEP_LATEST_COMMITS\",\n  \"retainCommits\": 10,\n  \"retainFileVersions\": 3,\n  \"triggerStrategy\": \"NUM_COMMITS\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cb37e3ac-9f61-4457-8bce-68d8867ba4e1",
+    "name": "Apache Hudi Timeline Server Tables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Apache Hudi Timeline Server providing table timeline, commit metadata, and table management operations for Hudi data lake tables.\n\nContact Support:\n Email: dev@hudi.apache.org",
+      "type": "text/plain"
+    }
+  }
+}

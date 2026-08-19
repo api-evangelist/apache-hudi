@@ -1,0 +1,283 @@
+{
+  "item": [
+    {
+      "id": "7aa8598c-987d-436c-9fc5-2ba92c6bed05",
+      "name": "Timeline",
+      "description": {
+        "content": "Hudi timeline and commit operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f007bd1f-7d9f-4542-aac0-25d4d49bc5b6",
+          "name": "Apache Hudi Get Timeline",
+          "request": {
+            "name": "Apache Hudi Get Timeline",
+            "description": {
+              "content": "Get the complete timeline of instants for a Hudi table.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "timeline",
+                ":tableName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) Hudi table name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e32d4081-47bd-460d-9e35-b0dafbc71c91",
+              "name": "Timeline retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) Hudi table name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instants\": [\n    {\n      \"timestamp\": \"20240101120000000\",\n      \"action\": \"commit\",\n      \"state\": \"COMPLETED\"\n    },\n    {\n      \"timestamp\": \"20240101120000000\",\n      \"action\": \"commit\",\n      \"state\": \"COMPLETED\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "204dc9b8-1f36-4ccf-a444-731a401a447e",
+          "name": "Apache Hudi Get Commit Metadata",
+          "request": {
+            "name": "Apache Hudi Get Commit Metadata",
+            "description": {
+              "content": "Get metadata for a specific commit instant on the Hudi timeline.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "hoodie",
+                "timeline",
+                ":tableName",
+                "commits",
+                ":commitTime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tableName",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commitTime",
+                  "description": "(Required) Commit timestamp"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "246eb54e-bf22-40f2-bd2b-66d39baca76c",
+              "name": "Commit metadata retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName",
+                    "commits",
+                    ":commitTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commitTime",
+                      "description": "(Required) Commit timestamp"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"commitTime\": \"20240101120000000\",\n  \"totalWriteBytes\": 52428800,\n  \"totalRecordsWritten\": 100000,\n  \"totalUpdateRecordsWritten\": 30000,\n  \"totalInsertRecordsWritten\": 70000,\n  \"totalBytesWritten\": 52428800\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d569e737-1f7a-483b-8e56-3aedb3a919ce",
+              "name": "Commit not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "hoodie",
+                    "timeline",
+                    ":tableName",
+                    "commits",
+                    ":commitTime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tableName",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commitTime",
+                      "description": "(Required) Commit timestamp"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9090",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ca2a356c-11b2-4b84-a21c-d3710a7a77d9",
+    "name": "Apache Hudi Server Tables Timeline API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for the Apache Hudi Timeline Server providing table timeline, commit metadata, and table management operations for Hudi data lake tables.\n\nContact Support:\n Email: dev@hudi.apache.org",
+      "type": "text/plain"
+    }
+  }
+}
