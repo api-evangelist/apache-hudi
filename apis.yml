@@ -27,6 +27,14 @@ tags:
   - Data Lake
   - Incremental Processing
   - Lakehouse
+  - Open-Source
+tags_raw:
+  - ACID
+  - Apache
+  - Big Data
+  - Data Lake
+  - Incremental Processing
+  - Lakehouse
   - Open Source
 created: '2026-03-16'
 modified: '2026-05-19'
@@ -70,6 +78,8 @@ apis:
   humanURL: https://hudi.apache.org/docs/timeline
   baseURL: http://localhost:9090
   tags:
+  - Timelines
+  tags_raw:
   - Timeline
   properties:
   - type: OpenAPI
