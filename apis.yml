@@ -5,6 +5,19 @@ description: >-
   incremental queries. It manages storage of large analytical datasets on distributed file systems with ACID
   transactions, timeline-based versioning, and integrations for Spark, Flink, and Hive.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
