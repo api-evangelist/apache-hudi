@@ -102,6 +102,8 @@ apis:
   - type: JSONLD
     url: json-ld/apache-hudi-timeline-context.jsonld
 common:
+  - type: Website
+    url: https://www.apache.org/
   - type: IssueTracker
     url: https://github.com/apache/hudi/issues
   - type: Releases
