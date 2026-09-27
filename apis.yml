@@ -43,7 +43,7 @@ tags:
   - Data Lake
   - Incremental Processing
   - Lakehouse
-  - Open-Source
+  - Open Source
 tags_raw:
   - ACID
   - Apache
@@ -52,6 +52,7 @@ tags_raw:
   - Incremental Processing
   - Lakehouse
   - Open Source
+  - Open-Source
 created: '2026-03-16'
 modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/apache-hudi/refs/heads/main/apis.yml
