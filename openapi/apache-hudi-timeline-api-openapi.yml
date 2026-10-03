@@ -71,22 +71,6 @@ paths:
           description: Commit not found
 components:
   schemas:
-    TimelineInstant:
-      type: object
-      description: A single instant on the Hudi timeline representing a completed action
-      properties:
-        timestamp:
-          type: string
-          description: Instant timestamp (yyyyMMddHHmmssSSS format)
-          example: '20240101120000000'
-        action:
-          type: string
-          description: Action type (commit, deltacommit, compaction, clean, rollback)
-          example: commit
-        state:
-          type: string
-          description: Instant state (COMPLETED, INFLIGHT, REQUESTED)
-          example: COMPLETED
     CommitMetadata:
       type: object
       description: Metadata for a completed Hudi commit operation
@@ -120,3 +104,19 @@ components:
           format: int64
           description: Bytes written to storage
           example: 52428800
+    TimelineInstant:
+      type: object
+      description: A single instant on the Hudi timeline representing a completed action
+      properties:
+        timestamp:
+          type: string
+          description: Instant timestamp (yyyyMMddHHmmssSSS format)
+          example: '20240101120000000'
+        action:
+          type: string
+          description: Action type (commit, deltacommit, compaction, clean, rollback)
+          example: commit
+        state:
+          type: string
+          description: Instant state (COMPLETED, INFLIGHT, REQUESTED)
+          example: COMPLETED
