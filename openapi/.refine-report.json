@@ -1,22 +1,19 @@
 {
   "provider": "apache-hudi",
   "sources": [
-    "_original/apache-hudi-timeline-openapi.yml"
+    "_original/apache-hudi-openapi.json"
   ],
   "outputs": [
-    "apache-hudi-tables-api-openapi.yml",
-    "apache-hudi-timeline-api-openapi.yml"
+    "apache-hudi-queues-api-openapi.yml",
+    "apache-hudi-status-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "apache-hudi-timeline-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "apis.yml register: already-registered"
+    "apache-hudi-openapi.json: upgraded swagger 2.0 -> OpenAPI 3.2.0",
+    "apis.yml register: written (+2 apis, 3 total)"
   ],
-  "skipped": [
-    "apache-hudi-tables-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "apache-hudi-timeline-api-openapi.yml: previously refined output, superseded by openapi/_original/"
-  ]
+  "skipped": []
 }
