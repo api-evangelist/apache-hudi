@@ -1,4 +1,4 @@
-# Apache Hudi (apache-hudi)
+# Apache Hudi
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,90 +66,172 @@
 
 Apache Hudi is a data lake platform that provides incremental data processing primitives including upserts and incremental queries. It manages storage of large analytical datasets on distributed file systems with ACID transactions, timeline-based versioning, and integrations for Spark, Flink, and Hive.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/apache-hudi/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/apache-hudi/refs/heads/main/apis.yml)
+**Areas:** ACID · Apache · Big Data · Data Lake · Incremental Processing · Lakehouse · Open Source
 
-## Scope
+## Apache Hudi on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for Apache Hudi is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/apache-hudi/](https://apis.io/providers/apache-hudi/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- ACID
-- Apache
-- Big Data
-- Data Lake
-- Incremental Processing
-- Lakehouse
-- Open Source
+- [Apache Hudi Java API](https://apis.io/apis/apache-hudi/apache-hudi-java-api/) — Java API for writing Hudi tables with upserts, inserts, and deletes, plus timeline management, compaction, and Spark/Flink DataSource integration APIs.
+- [Apache Hudi Tables API](https://apis.io/apis/apache-hudi/apache-hudi-tables-api/) — Hudi table management operations
+- [Apache Hudi Timeline API](https://apis.io/apis/apache-hudi/apache-hudi-timeline-api/) — Hudi timeline and commit operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Apache Hudi Timeline Server API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for the Apache Hudi Timeline Server providing table timeline management, commit metadata inspection, and table administration for Hudi data lake tables.
+- [Apache Hudi Agentic Access](https://apis.io/agentic-access/apache-hudi/apache-hudi-agentic-access/)
 
-- **Human URL:** [https://hudi.apache.org/docs/timeline](https://hudi.apache.org/docs/timeline)
-- **Base URL:** `http://localhost:9090`
+#### JSON Schema (6)
 
-#### Tags
+The data models the API reads and writes.
 
-- Commits
-- Data Lake
-- REST
-- Tables
-- Timeline
+- [CleanConfig](https://apis.io/schemas/apache-hudi/hudi-cleanconfig/)
+- [CommitMetadata](https://apis.io/schemas/apache-hudi/hudi-commitmetadata/)
+- [HudiTable](https://apis.io/schemas/apache-hudi/hudi-huditable/)
+- [QueryConfig](https://apis.io/schemas/apache-hudi/hudi-queryconfig/)
+- [TimelineInstant](https://apis.io/schemas/apache-hudi/hudi-timelineinstant/)
+- [WriteConfig](https://apis.io/schemas/apache-hudi/hudi-writeconfig/)
 
-#### Properties
+#### JSON Structure (6)
 
-- [Documentation](https://hudi.apache.org/docs/timeline)
-- [OpenAPI](openapi/apache-hudi-timeline-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/apache-hudi-timeline.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-hudi-timeline.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/hudi-huditableconfig-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/apache-hudi-timeline-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Data models expressed in JSON Structure.
 
-### Apache Hudi Java API
+- [Hudi Cleanconfig Structure](https://apis.io/json-structure/apache-hudi/hudi-cleanconfig-structure/)
+- [Hudi Commitmetadata Structure](https://apis.io/json-structure/apache-hudi/hudi-commitmetadata-structure/)
+- [Hudi Huditable Structure](https://apis.io/json-structure/apache-hudi/hudi-huditable-structure/)
+- [Hudi Queryconfig Structure](https://apis.io/json-structure/apache-hudi/hudi-queryconfig-structure/)
+- [Hudi Timelineinstant Structure](https://apis.io/json-structure/apache-hudi/hudi-timelineinstant-structure/)
+- [Hudi Writeconfig Structure](https://apis.io/json-structure/apache-hudi/hudi-writeconfig-structure/)
 
-Java API for writing Hudi tables with upserts, inserts, and deletes, plus timeline management, compaction, and Spark/Flink DataSource integration APIs.
+#### JSON-LD (1)
 
-- **Human URL:** [https://hudi.apache.org/docs/writing_data](https://hudi.apache.org/docs/writing_data)
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Apache Hudi Timeline Context](https://apis.io/jsonld/apache-hudi/apache-hudi-timeline-context/)
 
-- Java
-- SDK
-- Spark
-- Flink
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://hudi.apache.org/docs/writing_data)
-- [SDK](https://search.maven.org/artifact/org.apache.hudi/hudi-spark3.5-bundle_2.12)
-- [Postman Collection](collections/apache-hudi-timeline.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/apache-hudi-timeline.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Apache Hudi Vocabulary](https://apis.io/vocabularies/apache-hudi/apache-hudi-vocabulary/)
 
-## Common Properties
+#### Examples (6)
 
-- [LinkedIn](https://www.linkedin.com/company/apache-hudi)
+Example requests and responses.
+
+- [Hudi Cleanconfig Example](https://apis.io/examples/apache-hudi/hudi-cleanconfig-example/)
+- [Hudi Commitmetadata Example](https://apis.io/examples/apache-hudi/hudi-commitmetadata-example/)
+- [Hudi Huditable Example](https://apis.io/examples/apache-hudi/hudi-huditable-example/)
+- [Hudi Queryconfig Example](https://apis.io/examples/apache-hudi/hudi-queryconfig-example/)
+- [Hudi Timelineinstant Example](https://apis.io/examples/apache-hudi/hudi-timelineinstant-example/)
+- [Hudi Writeconfig Example](https://apis.io/examples/apache-hudi/hudi-writeconfig-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Apache Hudi Timeline Server Tables API](https://apis.io/collections/apache-hudi/open-apache-hudi-tables-api/)
+- [Apache Hudi Timeline Server API](https://apis.io/collections/apache-hudi/open-apache-hudi-timeline/)
+- [Apache Hudi Server Tables Timeline API](https://apis.io/collections/apache-hudi/open-apache-hudi-timeline-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Apache Hudi — jsonschema rules](https://apis.io/rules/apache-hudi/apache-hudi-jsonschema-spectral-rules/)
+- [Apache Hudi API Rules](https://apis.io/rules/apache-hudi/apache-hudi-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Apache Hudi Domain Security](https://apis.io/security/apache-hudi/apache-hudi-domain-security/)
+- [Apache Hudi Vulnerability Disclosure](https://apis.io/security/apache-hudi/apache-hudi-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Apache Hudi Plans Pricing](https://apis.io/plans/apache-hudi/apache-hudi-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Apache Hudi Rate Limits](https://apis.io/rate-limits/apache-hudi/apache-hudi-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Apache Hudi Finops](https://apis.io/finops/apache-hudi/apache-hudi-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.apache.org/)
 - [Documentation](https://hudi.apache.org/docs/overview)
-- [Getting Started](https://hudi.apache.org/docs/quick-start-guide)
-- [GitHub Organization](https://github.com/apache)
-- [GitHub Repository](https://github.com/apache/hudi)
-- [Spectral Rules](rules/apache-hudi-spectral-rules.yml)
-- [Vocabulary](vocabulary/apache-hudi-vocabulary.yaml)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://hudi.apache.org/ecosystem/)
+- [Getting started](https://hudi.apache.org/docs/quick-start-guide)
+- [Blog](https://hudi.apache.org/blog/rss.xml)
+- [GitHub](https://github.com/apache)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
+**Kin Score 32.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 46.5 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 7.9 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/apache-hudi/](https://apis.io/providers/apache-hudi/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Apache Hudi: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/apache-hudi/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
